@@ -1,0 +1,772 @@
+[
+  {
+    "risk_analysis": {
+      "risk_score": 40,
+      "critical_window": "10 days",
+      "dominant_risk": "Upcoming outflows exceed cash balance",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Secure additional funding or accelerate expected inflows",
+        "required_amount": 200000,
+        "deadline_days": 10,
+        "reason": "To cover upcoming outflows and maintain liquidity"
+      }
+    },
+    "sub_goal": {
+      "intent": "Secure additional funding or accelerate expected inflows",
+      "required_amount": 200000,
+      "deadline_days": 10,
+      "reason": "To cover upcoming outflows and maintain liquidity"
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "Infosys",
+      "rationale": "The goal is to secure additional funding of $200,000 within 10 days to maintain liquidity. The only receivable available is from Infosys, amounting to $300,000, which is due in 10 days. Since there are no client profiles provided that indicate a risk score modifier, we can assume a standard probability of payment. Given that the invoice amount exceeds the required amount, collecting this receivable is the most straightforward and effective strategy. Other options, such as delaying vendor payments, could jeopardize relationships and are not preferred due to the client's preferences. Therefore, the best course of action is to pursue the collection of the receivable from Infosys.",
+      "amount_goal": 200000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T11:19:05.153128"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 20,
+      "critical_window": "15 days",
+      "dominant_risk": "Cash flow management due to upcoming outflows",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Ensure sufficient cash flow to cover upcoming outflows",
+        "required_amount": 50000,
+        "deadline_days": 10,
+        "reason": "To meet the upcoming outflow to 'Test User' and maintain operational stability."
+      }
+    },
+    "sub_goal": {
+      "intent": "Ensure sufficient cash flow to cover upcoming outflows",
+      "required_amount": 50000,
+      "deadline_days": 10,
+      "reason": "To meet the upcoming outflow to 'Test User' and maintain operational stability."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "Client A",
+      "rationale": "To ensure sufficient cash flow to cover the upcoming outflows of 50000, I evaluated the available receivables. Client A has an outstanding invoice of 100000, which is due in 15 days. Although this is beyond our 10-day deadline, it presents the highest potential for cash inflow. Given that we have no client profiles to assess risk scores, I will assume a neutral probability of payment. The relationship with Client A is not described as high-friction, making it a viable option. The calculation for this option is (Probability of Payment * Invoice Amount) / (Relationship Friction). Since we are not provided with specific risk scores, I will proceed with the assumption that the probability of payment is reasonable. This strategy aligns with our goal of maintaining operational stability without damaging vendor relationships or delaying salaries.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T11:28:26.862004"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 20,
+      "critical_window": "15 days",
+      "dominant_risk": "Cash flow management due to upcoming outflows",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Ensure liquidity to cover upcoming outflows",
+        "required_amount": 50000,
+        "deadline_days": 10,
+        "reason": "To cover the upcoming employee payment of $50000 due in 10 days"
+      }
+    },
+    "sub_goal": {
+      "intent": "Ensure liquidity to cover upcoming outflows",
+      "required_amount": 50000,
+      "deadline_days": 10,
+      "reason": "To cover the upcoming employee payment of $50000 due in 10 days"
+    },
+    "decision": {
+      "strategy": "DELAY_VENDOR_PAYMENT",
+      "target": "Server",
+      "rationale": "To ensure liquidity for the upcoming employee payment of $50,000 due in 10 days, we need to assess our options. The only immediate cash inflow is from Client A, but they are due in 15 days, which does not help us meet our deadline. Therefore, we should consider delaying the vendor payment for the server, which is due in 5 days and amounts to $10,000. This will allow us to conserve cash and ensure we can cover the employee payment. Given the preference to avoid vendor damage, we will communicate this delay in a firm yet polite manner to maintain a good relationship.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T11:30:47.782262"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 20,
+      "critical_window": "15 days",
+      "dominant_risk": "Upcoming outflows exceed current cash balance",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Ensure sufficient cash flow to cover upcoming outflows",
+        "required_amount": 50000,
+        "deadline_days": 10,
+        "reason": "To meet the upcoming employee payment due in 10 days"
+      }
+    },
+    "sub_goal": {
+      "intent": "Ensure sufficient cash flow to cover upcoming outflows",
+      "required_amount": 50000,
+      "deadline_days": 10,
+      "reason": "To meet the upcoming employee payment due in 10 days"
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "Client A",
+      "rationale": "To ensure sufficient cash flow to cover the upcoming employee payment due in 10 days, I evaluated the available options. The only receivable is from Client A, with an invoice amount of 100000 due in 15 days. Given that we need 50000 in cash flow, I calculated the Probability of Payment based on the risk score modifier, which is not provided but assumed to be reasonable for this scenario. Since the due date is beyond our immediate need, I will pursue collection now to secure the funds before the employee payment deadline. The relationship friction is not mentioned, but since we are focusing on collecting receivables, I will assume it is manageable. Therefore, collecting from Client A is the best option to meet our cash flow needs.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T11:31:49.651183"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 20,
+      "critical_window": "15 days",
+      "dominant_risk": "Upcoming outflows exceeding cash balance",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Increase cash inflow to cover upcoming outflows",
+        "required_amount": 50000,
+        "deadline_days": 10,
+        "reason": "To ensure liquidity for upcoming employee and server payments"
+      }
+    },
+    "sub_goal": {
+      "intent": "Increase cash inflow to cover upcoming outflows",
+      "required_amount": 50000,
+      "deadline_days": 10,
+      "reason": "To ensure liquidity for upcoming employee and server payments"
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "Client A",
+      "rationale": "To achieve the sub-goal of increasing cash inflow to cover upcoming outflows, I evaluated the available options. The only receivable is from Client A, who owes $100,000 but has a due date of 15 days, which is beyond our 10-day deadline. However, since we need $50,000 urgently for employee and server payments, I will pursue collecting from Client A despite the due date. Given that there are no other clients listed and the need for liquidity is critical, this is the best option. The probability of payment is not provided, but since we have no other options, I will proceed with a firm approach to encourage prompt payment. The relationship friction is unknown, but given the urgency, it is worth the risk.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T11:33:59.046990"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 20,
+      "critical_window": "15 days",
+      "dominant_risk": "Cash flow management due to upcoming outflows",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Ensure sufficient cash flow to cover upcoming outflows",
+        "required_amount": 50000,
+        "deadline_days": 10,
+        "reason": "To cover the immediate outflow due in 10 days for employee payment"
+      }
+    },
+    "sub_goal": {
+      "intent": "Ensure sufficient cash flow to cover upcoming outflows",
+      "required_amount": 50000,
+      "deadline_days": 10,
+      "reason": "To cover the immediate outflow due in 10 days for employee payment"
+    },
+    "decision": {
+      "strategy": "DELAY_VENDOR_PAYMENT",
+      "target": "Server",
+      "rationale": "Given the immediate need for cash flow to cover employee payments due in 10 days, delaying the vendor payment for the server, which is due in 5 days, is the most viable option. The amount due is $10,000, which will help bridge the cash flow gap. Since the client receivable from Client A is due in 15 days and does not meet the immediate cash flow requirement, it is not a suitable option. Delaying the vendor payment aligns with the preference to avoid damaging vendor relationships, as it is a temporary measure to ensure salaries are paid on time.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T11:35:27.661341"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 70,
+      "critical_window": "10 days",
+      "dominant_risk": "Tight cash flow due to upcoming outflows exceeding current cash balance",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Secure additional funding or reduce upcoming outflows",
+        "required_amount": 100000,
+        "deadline_days": 10,
+        "reason": "To cover upcoming outflows and maintain operational stability"
+      }
+    },
+    "sub_goal": {
+      "intent": "Secure additional funding or reduce upcoming outflows",
+      "required_amount": 100000,
+      "deadline_days": 10,
+      "reason": "To cover upcoming outflows and maintain operational stability"
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "Tharu.co",
+      "rationale": "The primary goal is to secure additional funding or reduce outflows to maintain operational stability. The only receivable available is from Tharu.co, with an amount of 200,000 due in 10 days. Since there are no client profiles provided, we assume a neutral risk score modifier, which gives us a reasonable probability of payment. The relationship friction is not mentioned, so we can assume it is manageable. The calculation for this option is favorable as it directly addresses the required amount of 100,000. Collecting this receivable will not only meet the immediate cash flow needs but also avoid delaying vendor payments, which aligns with the preferences stated. Therefore, this is the best strategic action to take.",
+      "amount_goal": 100000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T11:46:34.538783"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 70,
+      "critical_window": "10 days",
+      "dominant_risk": "Upcoming outflows exceed cash balance",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Increase cash inflow to cover upcoming outflows",
+        "required_amount": 100000,
+        "deadline_days": 10,
+        "reason": "To ensure liquidity and meet immediate financial obligations"
+      }
+    },
+    "sub_goal": {
+      "intent": "Increase cash inflow to cover upcoming outflows",
+      "required_amount": 100000,
+      "deadline_days": 10,
+      "reason": "To ensure liquidity and meet immediate financial obligations"
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "tarun.co",
+      "rationale": "To achieve the sub-goal of increasing cash inflow to cover upcoming outflows, I evaluated the available receivables. The client 'tarun.co' has an outstanding invoice of $50,000 due in 10 days, which aligns perfectly with our deadline for liquidity. The other client, 'earii', has a larger invoice of $100,000 but is due in 19 days, which does not meet our immediate cash flow needs. Given that 'tarun.co' is due within the required timeframe, it is the best option to pursue for immediate cash inflow. Additionally, there are no high-friction relationships indicated, making this a straightforward collection effort.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T11:57:55.551282"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 40,
+      "critical_window": "10 days",
+      "dominant_risk": "Upcoming outflows exceed cash balance",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Increase cash inflow to cover upcoming outflows",
+        "required_amount": 100000,
+        "deadline_days": 10,
+        "reason": "To ensure liquidity and avoid cash shortfall due to upcoming outflows."
+      }
+    },
+    "sub_goal": {
+      "intent": "Increase cash inflow to cover upcoming outflows",
+      "required_amount": 100000,
+      "deadline_days": 10,
+      "reason": "To ensure liquidity and avoid cash shortfall due to upcoming outflows."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "tarun.co",
+      "rationale": "The goal is to increase cash inflow to cover upcoming outflows of 100,000 within 10 days. The only receivable available is from tarun.co for 1,000, which is due in 10 days. Since there are no client profiles provided, we assume a standard probability of payment. Given the low amount of the receivable, it is crucial to collect this amount to contribute towards the cash inflow goal. The relationship friction is not specified, but since this is a direct collection, we can assume it is manageable. Therefore, the best strategy is to collect the receivable from tarun.co.",
+      "amount_goal": 100000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T12:19:48.701192"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 30,
+      "critical_window": "20 days",
+      "dominant_risk": "Upcoming outflows exceed cash balance",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "Increase cash inflow to cover upcoming outflows",
+        "required_amount": 10000,
+        "deadline_days": 20,
+        "reason": "To ensure that the total cash balance can cover the upcoming outflows of 30000."
+      }
+    },
+    "sub_goal": {
+      "intent": "Increase cash inflow to cover upcoming outflows",
+      "required_amount": 10000,
+      "deadline_days": 20,
+      "reason": "To ensure that the total cash balance can cover the upcoming outflows of 30000."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "tarun.co",
+      "rationale": "The goal is to increase cash inflow to cover upcoming outflows of 30000. The only receivable available is from tarun.co for an amount of 10000, which is due in 20 days. Since this amount matches the required amount to cover the upcoming outflows, it is essential to prioritize collecting this receivable. There are no other clients listed, and since the amount is exactly what is needed, it makes sense to focus on this collection. The relationship friction is not mentioned, so we can assume it is manageable. Therefore, the best strategy is to collect the receivable from tarun.co.",
+      "amount_goal": 10000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T12:25:38.913618"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 80,
+      "critical_window": "10 days",
+      "dominant_risk": "LIQUIDITY_CRISIS",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "COVER_DEFICIT",
+        "required_amount": 129000,
+        "deadline_days": 10,
+        "reason": "Cash 150000 is INSUFFICIENT for Outflows 21000. Gap: 129000."
+      }
+    },
+    "sub_goal": {
+      "intent": "COVER_DEFICIT",
+      "required_amount": 129000,
+      "deadline_days": 10,
+      "reason": "Cash 150000 is INSUFFICIENT for Outflows 21000. Gap: 129000."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "client A",
+      "rationale": "The liquidity gap is 129000, indicating a significant deficit that needs to be addressed. The available receivable from client A is 20000, which can help cover part of the deficit. Since the net position is positive, we can afford to collect receivables to improve cash flow without delaying vendor payments. This action is necessary to mitigate the cash shortfall before the deadline.",
+      "amount_goal": 20000,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T13:25:46.756347"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 0,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 129000."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 0,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 129000."
+    },
+    "decision": {
+      "strategy": "MAINTAIN_STATUS_QUO",
+      "target": "None",
+      "rationale": "The liquidity status is 'SURPLUS', indicating that we have a positive projected balance of 129000. Since we have sufficient cash (150000) to cover outflows and maintain liquidity, the best course of action is to maintain the current status quo. This allows us to pay our bills on time, ensuring we maintain vendor trust and avoid any potential service disruptions.",
+      "amount_goal": 0,
+      "execution_params": {
+        "tone": "NONE",
+        "channel": "NONE"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T13:38:28.122552"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 0,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 10000."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 0,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 10000."
+    },
+    "decision": {
+      "strategy": "MAINTAIN_STATUS_QUO",
+      "target": "None",
+      "rationale": "The liquidity status is 'SURPLUS', indicating that we have a positive projected balance of $10,000. Since we can cover our outflows and maintain our financial obligations, the best course of action is to maintain the current status quo. This ensures that we pay our bills on time, which is crucial for maintaining vendor trust and avoiding any potential service disruptions.",
+      "amount_goal": 0,
+      "execution_params": {
+        "tone": "NONE",
+        "channel": "NONE"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T14:02:13.095039"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 0,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 10000. Receivable available to cover Bill."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 0,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 10000. Receivable available to cover Bill."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "infosys",
+      "rationale": "Step 1: Check Receivables. The receivable from 'infosys' has an amount of 40000, which is less than the bill amount of 100000 but is due in 10 days, which is before the bill due in 20 days. This means we can collect this receivable to help maintain liquidity. Step 2: Check Cash Reserves. The projected balance is 10000, which is a surplus, but we still need to cover the bill amount. Collecting from 'infosys' will help us preserve cash reserves. Therefore, the best action is to collect the receivable from 'infosys'.",
+      "amount_goal": 0,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T14:13:59.887286"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 8,
+      "critical_window": "10 days",
+      "dominant_risk": "LIQUIDITY_DEFICIT",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "COVER_DEFICIT",
+        "required_amount": 50000,
+        "deadline_days": 10,
+        "reason": "Cash is insufficient. Projected Balance: -50000. Receivables (20d) arrive too late for Bill (10d). Must rely on Cash."
+      }
+    },
+    "sub_goal": {
+      "intent": "COVER_DEFICIT",
+      "required_amount": 50000,
+      "deadline_days": 10,
+      "reason": "Cash is insufficient. Projected Balance: -50000. Receivables (20d) arrive too late for Bill (10d). Must rely on Cash."
+    },
+    "decision": {
+      "strategy": "DELAY_VENDOR_PAYMENT",
+      "target": "aws",
+      "rationale": "Step 1: The projected balance indicates a deficit of 50000, and the receivables from 'acme' (due in 10 days) arrive too late to cover the immediate bill due in 10 days. Step 2: Since the cash reserves are insufficient and no receivables arrive in time, the best course of action is to delay the payment to the vendor. Step 3: The bill is due in 20 days, which allows for a delay without risking service cutoffs.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T14:23:10.652289"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 0,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 80000. Receivable available to cover Bill."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 0,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 80000. Receivable available to cover Bill."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "acme",
+      "rationale": "Step 1: Check Receivables. The receivable from 'acme' is due in 9 days, which is less than the 15 days until the AWS bill is due. Therefore, this receivable can be collected in time to cover the bill. Action: 'COLLECT_RECEIVABLE' to ensure cash flow is preserved. Amount goal is set to the receivable amount of 20000. Step 2: Since there is a matching receivable, we do not need to check cash reserves or handle any deficit.",
+      "amount_goal": 20000,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T14:29:15.457460"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 0,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 10000. Receivable available to cover Bill."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 0,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 10000. Receivable available to cover Bill."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "acme",
+      "rationale": "Step 1: Check Receivables. The receivable from 'acme' is due in 9 days, which is less than the bill due in 18 days. This is a match, allowing us to collect the receivable to cover the bill. Action: Collect receivable from 'acme' to preserve cash flow. Step 2: Since we have a surplus status, we can utilize this receivable to maintain liquidity.",
+      "amount_goal": 40000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T14:40:31.249227"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 8,
+      "critical_window": "10 days",
+      "dominant_risk": "HIGH",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "COVER_DEFICIT",
+        "required_amount": 300000,
+        "deadline_days": 10,
+        "reason": "Cash is insufficient. Projected Balance: -150000. Receivables (20d) arrive too late for Bill (10d). Must rely on Cash."
+      }
+    },
+    "sub_goal": {
+      "intent": "COVER_DEFICIT",
+      "required_amount": 300000,
+      "deadline_days": 10,
+      "reason": "Cash is insufficient. Projected Balance: -150000. Receivables (20d) arrive too late for Bill (10d). Must rely on Cash."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": "acme",
+      "rationale": "Step 1: I checked the receivables and found that the receivable from 'acme' is due in 10 days, which matches the bill due in 10 days. This means I can collect this receivable in time to cover the bill. Step 2: Since there is a matching receivable, I will take action to collect it to preserve cash. Step 3: The projected balance indicates a deficit, but the receivable will help cover the immediate obligation.",
+      "amount_goal": 200000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T14:43:03.468252"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 8,
+      "critical_window": "10 days",
+      "dominant_risk": "HIGH",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "COVER_DEFICIT",
+        "required_amount": 100000,
+        "deadline_days": 10,
+        "reason": "Cash is insufficient. Projected Balance: -100000. Receivables (20d) arrive too late for Bill (10d). Must rely on Cash."
+      }
+    },
+    "sub_goal": {
+      "intent": "COVER_DEFICIT",
+      "required_amount": 100000,
+      "deadline_days": 10,
+      "reason": "Cash is insufficient. Projected Balance: -100000. Receivables (20d) arrive too late for Bill (10d). Must rely on Cash."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": [
+        "acme",
+        "ramco"
+      ],
+      "rationale": "Step 1: Check Receivables. The receivables from both clients 'acme' and 'ramco' are due in 10 days, which matches the due date of the bills. The total amount of receivables is 250000, which exceeds the total bill amount of 210000 (100000 for AWS and 110000 for Serve). Therefore, we can collect these receivables to cover the bills. This action preserves cash flow by utilizing incoming receivables to meet immediate obligations.",
+      "amount_goal": 210000,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T17:05:13.217420"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 10,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 100000."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 10,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 100000."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": [
+        "Bhargav.co"
+      ],
+      "rationale": "We have a cash balance of 150000, which is sufficient to cover our obligations. However, we also have a receivable from Bhargav.co amounting to 50000, which is due in 10 days. Since this amount can be collected and will help maintain liquidity without using cash, we will collect this receivable. The obligations due in 10 days total 50000 (10000 for AWS, 20000 for John, and 20000 for Ravi), and the receivable from Bhargav.co fully covers this obligation. Therefore, we will proceed to collect the receivable to preserve cash.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T17:35:35.321844"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 10,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 110000."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 10,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 110000."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": [
+        "Lokesh"
+      ],
+      "rationale": "First, we analyze the obligations which include bills and salaries. The obligations due in 10 days are: AWS bill for 10,000, salary for John at 20,000, and salary for Ram at 10,000, totaling 40,000. Next, we check the receivables. Lokesh has a receivable of 40,000 due in 10 days, which matches the obligation due date. Since the total receivable amount (40,000) is equal to the total obligation amount (40,000), we can fully cover the obligation by collecting the receivable. This action preserves our cash balance. Therefore, we will collect the receivable from Lokesh.",
+      "amount_goal": 40000,
+      "execution_params": {
+        "tone": "FIRM",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T17:45:56.147466"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 10,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 100000. Receivable available to cover Bill."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 10,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 100000. Receivable available to cover Bill."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": [
+        "Lokes.co"
+      ],
+      "rationale": "We have a cash balance of 150000, which is sufficient to cover our obligations. The obligation due in 10 days is for AWS (20000) and salaries (30000), totaling 50000. We have a receivable from Lokes.co for 50000 that is also due in 10 days. Since the total receivable amount matches the obligation amount, we can collect the receivable to preserve our cash balance. This allows us to maintain liquidity while ensuring that we meet our obligations on time.",
+      "amount_goal": 50000,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T17:50:40.224906"
+  },
+  {
+    "risk_analysis": {
+      "risk_score": 1,
+      "critical_window": "10 days",
+      "dominant_risk": "LOW",
+      "confidence": "HIGH",
+      "sub_goal": {
+        "intent": "MAINTAIN_LIQUIDITY",
+        "required_amount": 0,
+        "deadline_days": 10,
+        "reason": "Cash 150000 covers Outflows. Projected Balance: 90000. Receivable available to cover Bill."
+      }
+    },
+    "sub_goal": {
+      "intent": "MAINTAIN_LIQUIDITY",
+      "required_amount": 0,
+      "deadline_days": 10,
+      "reason": "Cash 150000 covers Outflows. Projected Balance: 90000. Receivable available to cover Bill."
+    },
+    "decision": {
+      "strategy": "COLLECT_RECEIVABLE",
+      "target": [
+        "Kavitha"
+      ],
+      "rationale": "1. The cash balance is 150000, which is sufficient to cover the obligations. 2. The obligation due in 10 days is 10000 for AWS and 50000 for salary to John, totaling 60000. 3. There is a receivable from Kavitha amounting to 60000, which is due in 10 days, matching the obligation due date. 4. Collecting this receivable will fully cover the obligations without using cash, preserving liquidity. 5. Therefore, the action is to collect the receivable from Kavitha.",
+      "amount_goal": 60000,
+      "execution_params": {
+        "tone": "POLITE",
+        "channel": "EMAIL"
+      }
+    },
+    "action_log": null,
+    "memory_updates": null,
+    "created_at": "2025-12-28T17:58:29.819483"
+  }
+]

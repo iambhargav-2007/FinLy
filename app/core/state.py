@@ -6,6 +6,9 @@ class FinanceState(TypedDict):
     fixed_bills: List[Dict[str, Any]]
     receivables: List[Dict[str, Any]]
     preferences: Dict[str, Any]
+    
+    # 🧮 Pre-calculated Metrics (Zero-Error)
+    financial_metrics: Dict[str, int]
 
     # Agent-1 outputs
     scenarios: List[Dict[str, Any]]
@@ -15,4 +18,10 @@ class FinanceState(TypedDict):
     # Agent-2 output ✅
     decision: Dict[str, Any]
 
-    action_log: dict
+    # Agent-3 output ⚡
+    action_log: Dict[str, Any]
+
+    # Memory update
+    memory_updates: Dict[str, Any]
+    client_profiles: Dict[str, Any]
+

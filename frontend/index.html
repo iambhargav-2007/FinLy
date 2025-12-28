@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinLy • Autonomous Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Mode Palette */
+            --primary: #6366f1;
+            /* Indigo 500 */
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            /* Pink 500 */
+
+            --bg-body: #0f172a;
+            /* Slate 900 */
+            --surface: #1e293b;
+            /* Slate 800 */
+            --surface-hover: #334155;
+            /* Slate 700 */
+
+            --text-main: #f8fafc;
+            /* Slate 50 */
+            --text-muted: #94a3b8;
+            /* Slate 400 */
+            --border: #334155;
+            /* Slate 700 */
+
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --gradient-glow: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 40%);
+
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+
+        /* --- Header --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 0 8px;
+        }
+
+        .logo-area h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .logo-area:hover .logo-icon {
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        .header p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 400;
+            padding-left: 64px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+        }
+
+        /* --- Stats Grid --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(30, 41, 59, 0.6);
+            /* Semi-transparent dark slate */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            /* Subtle border */
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-value input {
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            width: 100%;
+            outline: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .stat-value input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        .text-emerald {
+            color: #34d399;
+        }
+
+        .text-rose {
+            color: #fb7185;
+        }
+
+        .text-blue {
+            color: #60a5fa;
+        }
+
+        /* --- Layout --- */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Cards --- */
+        .card {
+            background: var(--surface);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.3);
+            /* Darker header */
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            margin-left: 28px;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        /* --- Tabs & Forms --- */
+        .tabs {
+            margin-bottom: 32px;
+        }
+
+        .tab-list {
+            display: flex;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 6px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-button.active {
+            background: var(--surface-hover);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-button:hover:not(.active) {
+            color: white;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .btn-icon {
+            flex: 0 0 44px;
+            /* Fixed width for button */
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        input:not([type="checkbox"]) {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.5);
+            /* Very dark input bg */
+            color: white;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        input:not([type="checkbox"]):focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(15, 23, 42, 0.8);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: none;
+            background: var(--surface-hover);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-end;
+            transition: all 0.2s;
+            border: 1px solid var(--border);
+        }
+
+        .btn-icon:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* --- List Items --- */
+        .item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .item:hover {
+            border-color: var(--primary);
+            background: var(--surface-hover);
+            transform: translateX(4px);
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Updates for Dark Mode Badges */
+        .badge-amber {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .badge-blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .badge-emerald {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-rose {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fb7185;
+            border: 1px solid rgba(244, 63, 94, 0.3);
+        }
+
+        .btn-delete {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 8px;
+            margin-left: 8px;
+            transition: color 0.2s;
+        }
+
+        .btn-delete:hover {
+            color: #fb7185;
+        }
+
+        /* --- Timeline --- */
+        .timeline {
+            position: relative;
+            padding-left: 36px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 17px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            left: -24px;
+            top: 16px;
+            z-index: 2;
+            border: 2px solid var(--surface);
+            box-shadow: 0 0 0 2px var(--border);
+        }
+
+        .timeline-dot.inflow {
+            background: #34d399;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .timeline-dot.outflow {
+            background: #fb7185;
+            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.2);
+        }
+
+        .timeline-dot.current {
+            background: var(--text-main);
+        }
+
+        .timeline-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.2s;
+        }
+
+        .timeline-card:hover {
+            border-color: var(--primary);
+            background: var(--surface-hover);
+        }
+
+        .timeline-card.critical {
+            border-color: rgba(244, 63, 94, 0.5);
+            background: rgba(244, 63, 94, 0.05);
+            /* Very faint red bg */
+        }
+
+        /* --- Agent Panel & Results --- */
+        .agent-card {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .agent-item {
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge-status {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .badge-active {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .badge-standby {
+            background: rgba(148, 163, 184, 0.15);
+            color: #cbd5e1;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        /* Risk Card Refinement */
+        .risk-card.high {
+            border: 2px solid #fb7185;
+            background: radial-gradient(circle at top right, rgba(244, 63, 94, 0.1), transparent);
+        }
+
+        .risk-card.medium {
+            border: 2px solid #fbbf24;
+            background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.1), transparent);
+        }
+
+        .risk-card.low {
+            border: 2px solid #34d399;
+            background: radial-gradient(circle at top right, rgba(52, 211, 153, 0.1), transparent);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 12px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #34d399, #fb7185);
+            box-shadow: 0 0 10px rgba(52, 211, 153, 0.4);
+        }
+
+        /* Decision & Action Cards */
+        .decision-card {
+            background: linear-gradient(135deg, var(--surface) 0%, #1e293b 100%);
+            border: 1px solid #4338ca;
+            /* Dark Indigo border */
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .goal-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-area">
+                <h1>
+                    <div class="logo-icon">⚡</div>
+                    FinLy
+                </h1>
+                <p>Autonomous Financial Intelligence Agent</p>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button class="btn-primary" onclick="runAnalysis()">
+                    <span id="btnText">Run Analysis</span>
+                    <span id="btnIcon">🚀</span>
+                </button>
+                <button id="btnDashboard" class="btn-primary" onclick="checkDashboard()"
+                    style="background: rgba(16, 185, 129, 0.2); border: 1px solid #34d399; color: #34d399;">
+                    <span>📊</span> View Dashboard
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-content">
+                    <div class="stat-label">Current Balance</div>
+                    <div class="stat-value">
+                        <span style="color: var(--primary);">₹</span>
+                        <input type="number" id="cashBalance" value="150000" onchange="updateStats()">
+                    </div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-content">
+                    <div class="stat-label">Expected Inflow</div>
+                    <div class="stat-value text-emerald">
+                        <span>↗</span>
+                        <span id="totalInflow">₹2,00,000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-content">
+                    <div class="stat-label">Expected Outflow</div>
+                    <div class="stat-value text-rose">
+                        <span>↘</span>
+                        <span id="totalOutflow">₹1,50,000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-content">
+                    <div class="stat-label">Net Position</div>
+                    <div class="stat-value" id="netPosition">
+                        <span id="netPositionValue">₹2,00,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            <!-- Left Column: Inputs & Data -->
+            <div>
+                <!-- Tabs -->
+                <div class="card tabs">
+                    <div class="card-content" style="padding-bottom: 8px;">
+                        <div class="tab-list">
+                            <button class="tab-button active" onclick="switchTab('salaries')">Salaries</button>
+                            <button class="tab-button" onclick="switchTab('bills')">Fixed Bills</button>
+                            <button class="tab-button" onclick="switchTab('receivables')">Receivables</button>
+                        </div>
+
+                        <!-- Salaries Tab -->
+                        <div id="tab-salaries" class="tab-content active animate-in">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" id="salaryName" placeholder="e.g. John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount (₹)</label>
+                                    <input type="number" id="salaryAmount" placeholder="50000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Due (Days)</label>
+                                    <input type="number" id="salaryDays" placeholder="15">
+                                </div>
+                                <button class="btn-icon" onclick="addSalary()">+</button>
+                            </div>
+                            <div class="item-list" id="salaryList"></div>
+                        </div>
+
+                        <!-- Bills Tab -->
+                        <div id="tab-bills" class="tab-content animate-in">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <input type="text" id="billType" placeholder="e.g. AWS Server">
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount (₹)</label>
+                                    <input type="number" id="billAmount" placeholder="12000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Due (Days)</label>
+                                    <input type="number" id="billDays" placeholder="10">
+                                </div>
+                                <button class="btn-icon" onclick="addBill()">+</button>
+                            </div>
+                            <div class="item-list" id="billList"></div>
+                        </div>
+
+                        <!-- Receivables Tab -->
+                        <div id="tab-receivables" class="tab-content animate-in">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Client</label>
+                                    <input type="text" id="receivableClient" placeholder="e.g. Acme Corp">
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount (₹)</label>
+                                    <input type="number" id="receivableAmount" placeholder="150000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="receivableEmail" placeholder="bill@acme.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Due (Days)</label>
+                                    <input type="number" id="receivableDays" placeholder="20">
+                                </div>
+                                <button class="btn-icon" onclick="addReceivable()">+</button>
+                            </div>
+                            <div class="item-list" id="receivableList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span>📅</span> Cash Flow Projection
+                        </div>
+                        <div class="card-description">AI-predicted 30 day outlook</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="timeline" id="timeline"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Agent Results -->
+            <div>
+                <!-- Status Panel -->
+                <div class="card agent-card" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span>🤖</span> Agent Swarm Status
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="agent-item">
+                            <div class="agent-info">🧠 Risk Agent</div>
+                            <span class="badge-status badge-active">Active</span>
+                        </div>
+                        <div class="agent-item">
+                            <div class="agent-info">🎯 Strategist</div>
+                            <span class="badge-status badge-active">Active</span>
+                        </div>
+                        <div class="agent-item">
+                            <div class="agent-info">⚡ Executor</div>
+                            <span class="badge-status" id="actionStatus">Standby</span>
+                        </div>
+                        <div class="agent-item">
+                            <div class="agent-info">💾 Memory</div>
+                            <span class="badge-status" id="memoryStatus">Waiting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Card -->
+                <div class="card risk-card" id="riskCard" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <div class="card-title">⚠️ Risk Assessment</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+                            <span class="stat-label" style="margin:0;">Risk Score</span>
+                            <span id="riskScore" style="font-size: 24px; font-weight:700;">--</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="riskProgress" style="width: 0%"></div>
+                        </div>
+
+                        <div class="info-box">
+                            <div class="stat-label">Critical Window</div>
+                            <div class="info-value" id="criticalWindow">--</div>
+                        </div>
+
+                        <div class="info-box">
+                            <div class="stat-label">Dominant Risk</div>
+                            <div class="info-value" id="dominantRisk">--</div>
+                        </div>
+
+                        <div class="goal-box">
+                            <div class="goal-label">🎯 AI Sub-Goal</div>
+                            <div style="font-size: 14px; font-weight: 500; color: var(--text-main)" id="subGoal">Pending
+                                Analysis...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decision Card -->
+                <div class="card decision-card" id="decisionCard" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <div class="card-title">🎯 Strategic Decision</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-box">
+                            <div class="stat-label">Strategy</div>
+                            <div class="info-value" id="strategy" style="color: var(--primary);">--</div>
+                        </div>
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div class="info-box" style="margin-bottom:0;">
+                                <div class="stat-label">Target</div>
+                                <div class="info-value" id="target">--</div>
+                            </div>
+                            <div class="info-box" style="margin-bottom:0;">
+                                <div class="stat-label">Goal Amount</div>
+                                <div class="info-value text-emerald" id="amountGoal">₹0</div>
+                            </div>
+                        </div>
+                        <div class="info-box" </div>
+                        </div>
+                    </div>
+
+                    <!-- Logic Script (Identical to previous functionality) -->
+                    <script>
+                        // Initial Data
+                        let financeData = {
+                            cash_balance: 0,
+                            salaries: [],
+                            fixed_bills: [],
+                            receivables: [],
+                            preferences: { dont_delay_salaries: true, avoid_vendor_damage: true }
+                        };
+
+                        const formatCurrency = (amt) => '₹' + amt.toLocaleString('en-IN');
+
+                        function switchTab(tabName) {
+                            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                            document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+
+                            event.target.classList.add('active');
+                            const target = document.getElementById('tab-' + tabName);
+                            target.style.display = 'block';
+                            target.classList.add('animate-in');
+                        }
+
+                        // List Rendering & Stats Updates
+                        function renderAll() {
+                            renderList('salaryList', financeData.salaries, 'employee', 'salaries');
+                            renderList('billList', financeData.fixed_bills, 'type', 'fixed_bills');
+                            renderList('receivableList', financeData.receivables, 'client', 'receivables');
+                            updateStats();
+                            updateTimeline();
+                        }
+
+                        function renderList(elId, list, key, type) {
+                            const el = document.getElementById(elId);
+                            el.innerHTML = list.map((item, i) => `
+                <div class="item">
+                    <div>
+                        <div style="font-weight: 600; color: var(--text-main);">${item[key]}</div>
+                        <div style="font-size: 13px; color: var(--text-muted);">
+                            ${item.email ? `<span style="color:var(--primary);">${item.email}</span> • ` : ''}
+                            ${formatCurrency(item.amount)} • Due in ${item.due_in_days} days
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center;">
+                        <span class="badge ${type === 'receivables' ? 'badge-emerald' : 'badge-amber'}">Day ${item.due_in_days}</span>
+                        <button class="btn-delete" onclick="removeItem('${type}', ${i})">×</button>
+                    </div>
+                </div>
+            `).join('');
+                        }
+
+                        function updateStats() {
+                            financeData.cash_balance = parseInt(document.getElementById('cashBalance').value) || 0;
+                            const inflow = financeData.receivables.reduce((s, i) => s + i.amount, 0);
+                            const outflow = financeData.salaries.reduce((s, i) => s + i.amount, 0) +
+                                financeData.fixed_bills.reduce((s, i) => s + i.amount, 0);
+                            const net = financeData.cash_balance + inflow - outflow;
+
+                            document.getElementById('totalInflow').textContent = formatCurrency(inflow);
+                            document.getElementById('totalOutflow').textContent = formatCurrency(outflow);
+                            const netEl = document.getElementById('netPositionValue');
+                            netEl.textContent = formatCurrency(net);
+                            netEl.className = net >= 0 ? 'text-emerald' : 'text-rose';
+                        }
+
+                        function updateTimeline() {
+                            const events = [
+                                ...financeData.salaries.map(x => ({ ...x, type: 'outflow', desc: x.employee })),
+                                ...financeData.fixed_bills.map(x => ({ ...x, type: 'outflow', desc: x.type })),
+                                ...financeData.receivables.map(x => ({ ...x, type: 'inflow', desc: x.client }))
+                            ].sort((a, b) => a.due_in_days - b.due_in_days);
+
+                            let bal = financeData.cash_balance;
+                            let html = `
+                <div class="timeline-item">
+                    <div class="timeline-dot current"></div>
+                    <div class="timeline-card">
+                        <div style="display:flex; justify-content:space-between; margin-bottom: 4px;">
+                            <span class="badge badge-standby">Today</span>
+                            <span style="font-weight: 700;">${formatCurrency(bal)}</span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-muted);">Starting Balance</div>
+                    </div>
+                </div>`;
+
+                            events.forEach(ev => {
+                                bal += (ev.type === 'inflow' ? ev.amount : -ev.amount);
+                                const critical = bal < 0;
+                                html += `
+                <div class="timeline-item">
+                    <div class="timeline-dot ${ev.type}"></div>
+                    <div class="timeline-card ${critical ? 'critical' : ''}">
+                        <div style="display:flex; justify-content:space-between; margin-bottom: 4px;">
+                            <span class="badge ${ev.type === 'inflow' ? 'badge-emerald' : 'badge-amber'}">Day ${ev.due_in_days}</span>
+                            <span class="${ev.type === 'inflow' ? 'text-emerald' : 'text-rose'}" style="font-weight:600;">
+                                ${ev.type === 'inflow' ? '+' : '-'}${formatCurrency(ev.amount)}
+                            </span>
+                        </div>
+                        <div style="font-weight: 600; font-size: 14px; margin-bottom: 2px;">${ev.desc}</div>
+                        <div style="display:flex; justify-content:space-between; font-size: 13px;">
+                            <span style="color: var(--text-muted);">Projected Balance</span>
+                            <span style="font-weight: 700; ${bal < 0 ? 'color: var(--secondary);' : ''}">${formatCurrency(bal)}</span>
+                        </div>
+                        ${critical ? '<div style="margin-top:8px; color: #fb7185; font-size: 12px; font-weight: 700;">⚠ CRITICAL: Negative Balance</div>' : ''}
+                    </div>
+                </div>`;
+                            });
+                            document.getElementById('timeline').innerHTML = html;
+                        }
+
+                        // Actions
+                        function addSalary() {
+                            const name = document.getElementById('salaryName').value;
+                            const amt = parseInt(document.getElementById('salaryAmount').value);
+                            const days = parseInt(document.getElementById('salaryDays').value);
+                            if (name && amt && days) { financeData.salaries.push({ employee: name, amount: amt, due_in_days: days }); clearInputs(['salaryName', 'salaryAmount', 'salaryDays']); renderAll(); }
+                        }
+                        function addBill() {
+                            const type = document.getElementById('billType').value;
+                            const amt = parseInt(document.getElementById('billAmount').value);
+                            const days = parseInt(document.getElementById('billDays').value);
+                            if (type && amt && days) { financeData.fixed_bills.push({ type, amount: amt, due_in_days: days }); clearInputs(['billType', 'billAmount', 'billDays']); renderAll(); }
+                        }
+                        function addReceivable() {
+                            const client = document.getElementById('receivableClient').value;
+                            const amt = parseInt(document.getElementById('receivableAmount').value);
+                            const days = parseInt(document.getElementById('receivableDays').value);
+                            const email = document.getElementById('receivableEmail').value;
+                            if (client && amt && days && email) {
+                                financeData.receivables.push({ client, amount: amt, due_in_days: days, email });
+                                clearInputs(['receivableClient', 'receivableAmount', 'receivableDays', 'receivableEmail']);
+                                renderAll();
+                            } else {
+                                alert("Please fill all fields including Email");
+                            }
+                        }
+                        function removeItem(type, idx) { financeData[type].splice(idx, 1); renderAll(); }
+                        function clearInputs(ids) { ids.forEach(id => document.getElementById(id).value = ''); }
+
+
+                        // API Call
+                        async function runAnalysis() {
+                            // 0. Force Sync Cash Balance (Crucial Fix)
+                            financeData.cash_balance = parseInt(document.getElementById('cashBalance').value) || 0;
+
+                            // 1. Check for unsaved inputs (User typed but didn't click +)
+                            if (document.getElementById('salaryName').value && document.getElementById('salaryAmount').value) addSalary();
+                            if (document.getElementById('billType').value && document.getElementById('billAmount').value) addBill();
+                            if (document.getElementById('receivableClient').value && document.getElementById('receivableAmount').value) addReceivable();
+
+                            // 2. Validate Data
+                            const hasData = financeData.receivables.length > 0 || financeData.salaries.length > 0 || financeData.fixed_bills.length > 0;
+                            if (!hasData) {
+                                if (!confirm("⚠️ No financial data entered (Salaries, Bills, Receivables). Run analysis on empty data?")) return;
+                            }
+
+                            const btn = document.querySelector('.btn-primary');
+                            const originalHTML = btn.innerHTML;
+
+                            try {
+                                btn.disabled = true;
+                                btn.innerHTML = `<span class="animate-spin">🔄</span> Processing...`;
+
+                                const res = await fetch('http://localhost:8000/run-analysis', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(financeData)
+                                });
+                                if (!res.ok) throw new Error("API Error");
+                                const data = await res.json();
+
+                                // SAVE & SHOW BUTTON
+                                localStorage.setItem('last_analysis', JSON.stringify(data));
+
+                                // Visual feedback
+                                const dbBtn = document.getElementById('btnDashboard');
+                                dbBtn.classList.add('animate-in');
+
+                                // Optional: visual feedback on Run button
+                                btn.innerHTML = `<span>✅</span> Complete`;
+                                setTimeout(() => { btn.innerHTML = originalHTML; }, 2000);
+
+                            } catch (e) {
+                                alert("Connection Error: Is the backend running?");
+                                console.error(e);
+                            } finally {
+                                btn.disabled = false;
+                                btn.innerHTML = originalHTML;
+                            }
+                        }
+
+                        function checkDashboard() {
+                            const data = localStorage.getItem('last_analysis');
+                            if (data) {
+                                window.location.href = '/dashboard.html';
+                            } else {
+                                alert("⚠️ Please run an analysis first to generate data!");
+                            }
+                        }
+
+                        // Init
+                        renderAll();
+                    </script>
+</body>
+
+</html>

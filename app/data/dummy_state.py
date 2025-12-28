@@ -1,21 +1,19 @@
 # app/data/dummy_state.py
 
 finance_state = {
-    "cash_balance": 150000,  # ₹1.5L available
+    "cash_balance": 10000, 
 
     "salaries": [
-        {"employee": "Dev", "amount": 60000, "due_in_days": 15},
-        {"employee": "Designer", "amount": 40000, "due_in_days": 15}
+        {"employee": "Dev Team", "amount": 50000, "due_in_days": 10}
     ],
 
     "fixed_bills": [
-        {"type": "AWS", "amount": 20000, "due_in_days": 10},
-        {"type": "Office Rent", "amount": 30000, "due_in_days": 18}
+        {"type": "AWS", "amount": 10000, "due_in_days": 10},
     ],
 
     "receivables": [
-        {"client": "Client A", "amount": 120000, "due_in_days": 12},
-        {"client": "Client B", "amount": 80000, "due_in_days": 20}
+        {"client": "Client A", "amount": 40000, "due_in_days": 10},
+        {"client": "Client B", "amount": 10000, "due_in_days": 10},
     ],
 
     "preferences": {

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinLy - Agent Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0F172A;
+            --surface-dark: #1E293B;
+            --primary: #818CF8;
+            --secondary: #FB7185;
+            --success: #34D399;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Stats in cards */
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .risk-bar-container {
+            background: rgba(255, 255, 255, 0.1);
+            height: 8px;
+            border-radius: 4px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .risk-bar {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-alert {
+            background: rgba(251, 113, 133, 0.2);
+            color: #FB7185;
+        }
+
+        .badge-success {
+            background: rgba(52, 211, 153, 0.2);
+            color: #34D399;
+        }
+
+        .email-preview {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 16px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-muted);
+            white-space: pre-wrap;
+            border-left: 3px solid var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <a href="/" class="btn-back">← Back to Inputs</a>
+            <h1>Agent Dashboard</h1>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Risk Agent -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">🛡️ Risk Analysis Agent</div>
+                    <span id="riskBadge" class="badge">Checking...</span>
+                </div>
+
+                <div class="stat-label">Risk Score</div>
+                <div class="risk-bar-container">
+                    <div id="riskBar" class="risk-bar" style="width: 0%; background: var(--success);"></div>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                    <span id="riskScoreVal" style="font-weight:700;">0/100</span>
+                    <span id="criticalWindow" style="color:var(--secondary);">Stable</span>
+                </div>
+
+                <div class="stat-label">Dominant Risk</div>
+                <div id="dominantRisk" class="stat-value">None</div>
+
+                <div class="stat-label">Required Sub-Goal</div>
+                <div id="subGoal" class="stat-value" style="color:var(--primary);">None</div>
+            </div>
+
+            <!-- Decision Agent -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">⚖️ Decision Agent</div>
+                </div>
+
+                <div class="stat-label">Selected Strategy</div>
+                <div id="strategy" class="stat-value">Evaluating...</div>
+
+                <div class="stat-label">Rationale</div>
+                <div id="rationale" style="font-size:14px; color:var(--text-muted); line-height:1.6;">
+                    Pending logic...
+                </div>
+
+                <div style="margin-top:20px;">
+                    <div class="stat-label">Financial Target</div>
+                    <div id="targetAmount" class="stat-value">₹0</div>
+                </div>
+            </div>
+
+            <!-- Action Agent -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">⚡ Action Agent</div>
+                    <span id="actionStatus" class="badge badge-success">Executed</span>
+                </div>
+
+                <div class="stat-label">Action Taken</div>
+                <div id="actionTaken" class="stat-value">No Action</div>
+
+                <div class="stat-label">Recipient Details</div>
+                <div id="recipientDetails" style="margin-bottom:16px; font-size:14px;">
+                    -
+                </div>
+
+                <div class="stat-label">Email Draft</div>
+                <div id="emailPreview" class="email-preview">
+                    (No email generated)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const formatCurrency = (val) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val);
+
+        function loadDashboard() {
+            const dataStr = localStorage.getItem('last_analysis');
+            if (!dataStr) {
+                alert("No analysis data found. Please run analysis from the home page.");
+                window.location.href = "/";
+                return;
+            }
+
+            const data = JSON.parse(dataStr);
+            console.log("Loading Dashboard Data:", data);
+
+            // 1. Risk
+            const risk = data.risk_analysis;
+            if (risk) {
+                const score = risk.risk_score || 0;
+                document.getElementById('riskScoreVal').textContent = score + '/100';
+                document.getElementById('riskBar').style.width = score + '%';
+                document.getElementById('riskBar').style.background = score > 70 ? '#FB7185' : (score > 40 ? '#FBBF24' : '#34D399');
+                document.getElementById('riskBadge').textContent = score > 70 ? 'CRITICAL' : 'STABLE';
+                document.getElementById('riskBadge').className = `badge ${score > 70 ? 'badge-alert' : 'badge-success'}`;
+
+                document.getElementById('criticalWindow').textContent = risk.critical_window || 'N/A';
+                document.getElementById('dominantRisk').textContent = risk.dominant_risk || 'None';
+
+                const sg = risk.sub_goal || {};
+                document.getElementById('subGoal').textContent = sg.intent ? `${sg.intent} (Due: ${sg.deadline_days} days)` : 'No immediate goal';
+            }
+
+            // 2. Decision
+            const dec = data.decision;
+            if (dec) {
+                document.getElementById('strategy').textContent = dec.strategy || 'No Strategy';
+                document.getElementById('rationale').textContent = dec.rationale || 'No reasoning provided.';
+                document.getElementById('targetAmount').textContent = formatCurrency(dec.amount_goal || 0);
+            }
+
+            // 3. Action
+            // 3. Action
+            const act = data.action_log;
+            if (act) {
+                document.getElementById('actionTaken').textContent = act.action_taken || 'No Action';
+
+                if (act.targets_processed && act.targets_processed.length > 0) {
+                    // MULTI-TARGET MODE
+                    const detailsHtml = act.targets_processed.map(t => `
+                        <div style="background:rgba(255,255,255,0.05); padding:8px; margin-bottom:8px; border-radius:8px;">
+                            <div><strong>Target:</strong> ${t.target}</div>
+                            <div style="color:var(--primary); font-size:13px;"><strong>📧 To:</strong> ${t.email}</div>
+                            <div style="font-size:12px; margin-top:2px; color:var(--success);">Result: ${t.result.status}</div>
+                        </div>
+                    `).join('');
+
+                    document.getElementById('recipientDetails').innerHTML = detailsHtml +
+                        `<div style="font-size:12px; margin-top:4px;">Tone: ${act.tone_used}</div>`;
+
+                    document.getElementById('emailPreview').textContent = "Multiple emails selected. Check individual logs above.";
+
+                } else if (act.action_taken !== "NO_ACTION") {
+                    // LEGACY / SINGLE TARGET MODE
+                    document.getElementById('recipientDetails').innerHTML = `
+                        <div><strong>Target:</strong> ${act.target}</div>
+                        <div style="color:var(--primary);"><strong>📧 To:</strong> ${act.recipient_email}</div>
+                        <div style="font-size:12px; margin-top:4px;">Tone: ${act.tone_used}</div>
+                    `;
+                    document.getElementById('emailPreview').textContent = act.content_draft;
+                } else {
+                    // NO ACTION
+                    document.getElementById('recipientDetails').textContent = "Logic determined no action was necessary.";
+                    document.getElementById('emailPreview').textContent = JSON.stringify(act.result, null, 2);
+                }
+            }
+        }
+
+        loadDashboard();
+    </script>
+</body>
+
+</html>
